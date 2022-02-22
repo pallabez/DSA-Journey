@@ -1,5 +1,3 @@
-"use strict";
-
 class Node {
   constructor(element) {
     this.element = element;
@@ -67,6 +65,7 @@ class LinkedList {
 
   remove(index) {
     if(index == 0) {
+      if(this.head.next == null) this.tail = null;
       this.head = this.head.next;
       this.size--;
       return;
@@ -83,6 +82,9 @@ class LinkedList {
     }
     this.size--;
     current.next = current.next.next;
+    if(current.next == null) {
+      this.tail = current;
+    }
   }
 
   sizeOf() {
@@ -90,12 +92,7 @@ class LinkedList {
   }
 }
 
-
-var li = new LinkedList();
-li.insert(0, 4);
-li.add(5);
-li.add(6);
-li.add(7);
-li.remove(2);
-
-li.print();
+module.exports = {
+  LinkedList,
+  Node,
+}
