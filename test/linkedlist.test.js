@@ -7,7 +7,7 @@ const addTwoItems = (list) => {
   list.size = 2;
 } 
 
-describe('Linked list', () => {
+describe('Linked List', () => {
   let list;
 
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('Linked list', () => {
 
   });
 
-  it('can push to the tail', () => {
+  it('can add to the tail', () => {
     list.add('Item 1');
     expect(list).toEqual({
       head: { element: 'Item 1', next: null },
