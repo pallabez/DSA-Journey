@@ -33,7 +33,27 @@ function inorderTreeWalkByStack(root) {
     }
 }
 
+function inorderTreeWalkByStackAlternative(root) {
+    if (root == null) return;
+
+    let stack = [];
+    let curr = root;
+
+    while (curr != null || stack.length != 0) {
+        while (curr != null) {
+            stack.push(curr);
+            curr = curr.left;
+        }
+
+        curr = stack.pop();
+        console.log(curr.element);
+
+        curr = curr.right;
+    }
+}
+
 module.exports = {
     inorderTreeWalkByRecursion,
-    inorderTreeWalkByStack
+    inorderTreeWalkByStack,
+    inorderTreeWalkByStackAlternative
 }
