@@ -1,8 +1,9 @@
 class Node {
-    constructor(element) {
+    constructor(element, parent = null) {
         this.element = element;
         this.left = null;
         this.right = null;
+        this.parent = parent;
     }
 }
 
@@ -25,14 +26,14 @@ class BinarySearchTree {
 function addElementToBST(element, root) {
     if (element > root.element) {
         if (root.right == null) {
-            root.right = new Node(element);
+            root.right = new Node(element, root);
             return;
         } 
 
         addElementToBST(element, root.right);
     } else {
         if (root.left == null) {
-            root.left = new Node(element);
+            root.left = new Node(element, root);
             return;
         }
 

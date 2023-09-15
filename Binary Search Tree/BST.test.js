@@ -14,82 +14,52 @@ describe('Binary Search Tree', () => {
   });
 
   describe('add', () => {
-    it('can add element to empty BST', () => {
+    it('should add element to empty BST', () => {
       bst.add(5);
   
-      expect(bst).toEqual({
-        root: {
-          element: 5,
-          left: null,
-          right: null
-        }
-      })
+      expect(bst.root.element).toBe(5);
+      expect(bst.root.left).toBe(null);
+      expect(bst.root.right).toBe(null);
+      expect(bst.root.parent).toBe(null);
     })
   
-    it('can add elements smaller than root', () => {
+    it('should add elements smaller than root', () => {
       bst.add(5);
       bst.add(2);
       bst.add(1);
   
-      expect(bst).toEqual({
-        root: {
-          element: 5,
-          left: {
-            element: 2,
-            left: {
-              element: 1,
-              left: null,
-              right: null,
-            },
-            right: null,
-          },
-          right: null,
-        }
-      })
+      expect(bst.root.element).toBe(5);
+      expect(bst.root.right).toBe(null);
+      expect(bst.root.left.element).toBe(2);
+      expect(bst.root.left.left.element).toBe(1);
     })
-  
-    it('can add elements larger than root', () => {
+    
+    it('should add elements larger than root', () => {
       bst.add(5);
       bst.add(7);
       bst.add(10);
-  
-      expect(bst).toEqual({
-        root: {
-          element: 5,
-          right: {
-            element: 7,
-            right: {
-              element: 10,
-              left: null,
-              right: null,
-            },
-            left: null,
-          },
-          left: null,
-        }
-      })
+      
+      expect(bst.root.element).toBe(5);
+      expect(bst.root.left).toBe(null);
+      expect(bst.root.right.element).toBe(7);
+      expect(bst.root.right.right.element).toBe(10);
     })
-  
-    it('can add element both larger and smaller than root', () => {
+    
+    it('should add element both larger and smaller than root', () => {
       bst.add(5);
       bst.add(2);
       bst.add(7);
-  
-      expect(bst).toEqual({
-        root: {
-          element: 5,
-          left: {
-            element: 2,
-            left: null,
-            right: null,
-          },
-          right: {
-            element: 7,
-            left: null,
-            right: null,
-          }
-        }
-      })
+      
+      expect(bst.root.element).toBe(5);
+      expect(bst.root.left.element).toBe(2);
+      expect(bst.root.right.element).toBe(7);
+    })
+    
+    it('should add child node with parent reference', () => {
+      bst.add(5);
+      bst.add(2);
+      
+      expect(bst.root.left.parent.element).toBe(5)
     })
   })
 });
