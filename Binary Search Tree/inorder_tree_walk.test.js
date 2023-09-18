@@ -7,7 +7,7 @@ describe('Inorder Tree Walk', () => {
 
     beforeEach(() => {
         bst = new BinarySearchTree();
-        consoleLogSpy = jest.spyOn(console, 'log');
+        consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
     })
 
     afterEach(() => {
